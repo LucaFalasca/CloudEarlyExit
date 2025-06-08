@@ -9,6 +9,7 @@ services:
       dockerfile: ./docker/optimizer.dockerfile
     tty: true
     stdin_open: true
+    command: ["./start.sh", "Main.py"]
     networks:
       - dissertation_network
     volumes:
@@ -34,6 +35,7 @@ services:
       dockerfile: ./docker/optimizer.dockerfile
     tty: true
     stdin_open: true
+    command: ["./start.sh", "Main.py"]
     networks:
       - dissertation_network
     volumes:
@@ -56,6 +58,7 @@ services:
       dockerfile: ./docker/registry.dockerfile
     tty: true
     stdin_open: true
+    command: ["./start.sh", "Main.py"]
     networks:
       - dissertation_network
     volumes:
@@ -76,6 +79,7 @@ services:
       dockerfile: ./docker/server.dockerfile
     tty: true
     stdin_open: true
+    command: ["./start.sh", "Main.py"]
     networks:
       - dissertation_network
     volumes:
@@ -109,6 +113,7 @@ services:
       dockerfile: ./docker/server.dockerfile
     tty: true
     stdin_open: true
+    command: ["./start.sh", "ServerMain.py"]
     networks:
       - dissertation_network
     volumes:
@@ -144,6 +149,7 @@ services:
       dockerfile: ./docker/manager.dockerfile
     tty: true
     stdin_open: true
+    command: ["./start.sh", "Main.py"]
     networks:
       - dissertation_network
     volumes:
