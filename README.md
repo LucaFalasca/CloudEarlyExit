@@ -11,7 +11,7 @@ Go in the src folder and run the following command:
 
 You need to generate model files first. You can execute this command for doing it:
     ```bash
-    bash test.sh 
+    bash generate_models.sh
     ```
 But you need to be in right environment. Use a devContainer for this or install all the dependencies.
 
@@ -19,7 +19,7 @@ But you need to be in right environment. Use a devContainer for this or install 
 
 You need to run it from your command line and pass a specific argument indicating which test you want to execute, or nothing for executes all of them
     ```bash
-    bash test.sh 
+    bash test.sh
     ```
 
 ### Available Arguments:
