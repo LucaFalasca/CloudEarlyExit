@@ -39,4 +39,4 @@ You need to run it from your command line and pass a specific argument indicatin
 * **`Inference`**: Executes the inference test inside the `Client` container.
     ```bash
     bash test.sh Inference
-        ```
+    ```
