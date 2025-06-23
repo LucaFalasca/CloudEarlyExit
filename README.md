@@ -4,7 +4,7 @@ This project provide an extension for a Early Exit feature in an existing projec
 
 ## How to start
 
-Go in the src folder and run the following command:ù
+Go in the src folder and run the following command:
 ```bash
 docker compose up --build
 ```
