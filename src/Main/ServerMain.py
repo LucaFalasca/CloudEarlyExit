@@ -33,9 +33,14 @@ def main():
         os.makedirs(dir, exist_ok=True)
 
     register_response: ServerId = register_to_registry()
+    print("Registered to Registry with response:", register_response)
 
-    if register_response.server_id == "0":
+    # Check if this is the first server (ID "0" or "1" if registry was restarted)
+    if register_response.server_id in ["0", "1"]:
+        print("Starting Frontend Server...")
         frontend_server = start_frontend_server()
+    else:
+        print("Not starting Frontend Server, this is not the main server.")
 
     execution_profile_server = start_execution_profiler()
     ping_server = start_ping_server()
@@ -48,7 +53,8 @@ def main():
     execution_profile_server.wait_for_termination()
     ping_server.wait_for_termination()
 
-    if register_response.server_id == "0":
+    # Wait for frontend server termination if it was started
+    if register_response.server_id in ["0", "1"]:
         frontend_server.wait_for_termination()
     pass
 

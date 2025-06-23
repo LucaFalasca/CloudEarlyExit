@@ -76,3 +76,14 @@ class RegistryServer(RegisterServicer):
         print(f"\t Ping Port >> {reachability_info.ping_port}")
         print(f"\t Server ID >> {server_id}")
         print("----------------------------------------")
+
+    def reset_registry(self, request: Empty, context) -> Empty:
+        """Reset the registry to clean state"""
+        with self.reach_dict_lock.gen_wlock():
+            self.reachability_dict.clear()
+
+        with self.server_id_lock.gen_wlock():
+            self.server_id = 0
+
+        print("Registry reset - all servers cleared, ID counter reset to 0")
+        return Empty()

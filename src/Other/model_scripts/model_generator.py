@@ -30,8 +30,8 @@ def main():
         "yolo11x-cls.pt",
     ]
     download_and_export(cls_models)
-    # download_and_export(seg_models)
-    # download_and_export(det_models)
+    download_and_export(seg_models)
+    #download_and_export(det_models)
 
 
 if __name__ == "__main__":

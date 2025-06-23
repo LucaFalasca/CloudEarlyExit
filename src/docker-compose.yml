@@ -9,7 +9,7 @@ services:
       dockerfile: ./docker/optimizer.dockerfile
     tty: true
     stdin_open: true
-    command: ["./start.sh", "Main.py"]
+    command: [./start.sh, Main.py]
     networks:
       - dissertation_network
     volumes:
@@ -29,13 +29,15 @@ services:
       - ./Other/models_profiles:/optimizer_data/models_profiles
       - ./Other/plans/:/optimizer_data/plans
     working_dir: /src
+    depends_on:
+      - client
 
   deployer:
     build:
       dockerfile: ./docker/optimizer.dockerfile
     tty: true
     stdin_open: true
-    command: ["./start.sh", "Main.py"]
+    command: [./start.sh, Main.py]
     networks:
       - dissertation_network
     volumes:
@@ -52,13 +54,15 @@ services:
       - ./CommonPlan:/src/CommonPlan
       - ./CommonIds:/src/CommonIds
     working_dir: /src
+    depends_on:
+      - client
 
   registry:
     build:
       dockerfile: ./docker/registry.dockerfile
     tty: true
     stdin_open: true
-    command: ["./start.sh", "Main.py"]
+    command: [./start.sh, Main.py]
     networks:
       - dissertation_network
     volumes:
@@ -79,7 +83,7 @@ services:
       dockerfile: ./docker/server.dockerfile
     tty: true
     stdin_open: true
-    command: ["./start.sh", "Main.py"]
+    command: [./start.sh, Main.py]
     networks:
       - dissertation_network
     volumes:
@@ -107,13 +111,15 @@ services:
         limits: # Hard Limit
           cpus: "3"
           memory: 6G
+    depends_on:
+      - client
 
   client:
     build:
       dockerfile: ./docker/server.dockerfile
     tty: true
     stdin_open: true
-    command: ["./start.sh", "ServerMain.py"]
+    command: [./start.sh, ServerMain.py]
     networks:
       - dissertation_network
     volumes:
@@ -149,7 +155,7 @@ services:
       dockerfile: ./docker/manager.dockerfile
     tty: true
     stdin_open: true
-    command: ["./start.sh", "Main.py"]
+    command: [./start.sh, Main.py]
     networks:
       - dissertation_network
     volumes:
@@ -175,3 +181,5 @@ services:
       - ./Other/calibration_dataset:/model_pool_data/calibration_dataset
 
     working_dir: /src
+    depends_on:
+      - client

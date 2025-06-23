@@ -10,10 +10,10 @@ from proto_compiled.deployment_pb2_grpc import DeploymentStub
 
 
 def main():
-    deployer_addr = ConfigReader.ConfigReader("../../config/config.ini").read_str(
+    deployer_addr = ConfigReader.ConfigReader("config/config.ini").read_str(
         "addresses", "DEPLOYER_ADDR"
     )
-    deployer_port = ConfigReader.ConfigReader("../../config/config.ini").read_int(
+    deployer_port = ConfigReader.ConfigReader("config/config.ini").read_int(
         "ports", "DEPLOYER_PORT"
     )
 

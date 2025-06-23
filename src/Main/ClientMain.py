@@ -80,6 +80,7 @@ def do_inference(
         pad_h=preprocess_dict["pad_h"],
         nm=32,
     )
+    print(f"Request {request_idx} done, saving image...")
     cv2.imwrite(f"./Client/test/Test_Image_Out_{request_idx}.jpg", post_image)
 
 

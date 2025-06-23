@@ -1,42 +1,42 @@
 # CloudEarlyExit
+
 This project provide an extension for a Early Exit feature in an existing project that provide a model partition in multiple server based on multiple criteria.
 
 ## How to start
+
 Go in the src folder and run the following command:
-```docker compose up --build```
+`docker compose up --build`
+
+## Preliminar steps
+
+You need to generate model files first. You can execute this command for doing it:
+    ```bash
+    bash test.sh 
+    ```
+But you need to be in right environment. Use a devContainer for this or install all the dependencies.
 
 ## How to run tests
-Go in the src folder and run the following command:
-```docker exec 
 
+You need to run it from your command line and pass a specific argument indicating which test you want to execute, or nothing for executes all of them
+    ```bash
+    bash test.sh 
+    ```
 
-frontend server per componenti fittizione, intermediate per le componenti effettive
+### Available Arguments:
 
-# Fa partire uno dei test sul deployer
-PYTHONPATH=../../proto_compiled/:../../ python3 <TestName>
-# stanno qui i test
-src/Deployer/Test
+* **`PlanGeneration`**: Executes the plan generation test inside the `Deployer` container.
 
-# Fa partire il test dell'inferenza sul client
-./start.sh ClientMain.py 
+  ```bash
+  bash test.sh PlanGeneration
+    ```
 
-# Per far partire le altre componenti 
-./start.sh Main.py 
+* **`Deployment`**: Executes the deployment test inside the `Deployer` container.
 
-# oppure per il client 
-./start.sh ServerMain.py
+  ```bash
+  bash test.sh Deployment
+    ```
 
-# COnfigurazione dei container
-src/config/local_config.ini
-
-# Generazione dei modelli da runnare in locale
-/workspaces/CloudEarlyExit/src/Other/model_scripts/model_generator.py
-
-# Pre-post processing, da integrare la versione nuova nei test
-Analysis/Onnx/YoloPPP.py
-
-# La divisione del piano avviene:
-src/ModelDivider/Divide/OnnxModelPartitioner.py
-
-# Qui vengono fatte le rpc per far e il deployement
-src/Deployer/DeploymentServer.py
+* **`Inference`**: Executes the inference test inside the `Client` container.
+    ```bash
+    bash test.sh Inference
+        ```
