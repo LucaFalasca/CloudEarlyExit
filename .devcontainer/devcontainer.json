@@ -24,12 +24,12 @@
         "vincent-templier.vscode-netron",
         "eamodio.gitlens",
         "trunk.io",
-        "GrapeCity.gc-excelviewer",
+        "GrapeCity.gc-excelviewer"
         //"codeium.codeium"
-
       ]
     }
-  }
+  },
+  "runArgs": ["--name", "workspace_devcontainer"]
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
