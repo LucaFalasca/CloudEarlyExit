@@ -8,3 +8,5 @@ runs/
 coco128/
 *.npy
 *.npz
+src/Other/datasets
+src/Other/datasets_scripts/api_key_roboflow

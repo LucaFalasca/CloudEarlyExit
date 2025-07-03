@@ -1,21 +1,37 @@
-ultralytics
-ai-edge-litert
-tensorflow
-keras_cv
+# Core ML/AI libraries
 numpy<2
-psutil
 pandas
 matplotlib
-prettytable
-imageio
-grpcio
-grpcio-tools
+
+# TensorFlow ecosystem
+ultralytics
+tensorflow
+keras_cv
 keras-hub
-onnx
-onnxruntime
-onnxslim
+
+# ONNX ecosystem - versioni più stabili
+onnx>=1.12.0,<1.16.0
+onnxruntime-cpu
+onnxslim>=0.1.50
 onnxruntime-extensions
 onnx-tool
+
+# System utilities
+psutil
+prettytable
+imageio
+
+# Network/gRPC
+grpcio
+grpcio-tools
+
+# Optimization
 PuLP
 networkx
+
+# Concurrency
 readerwriterlock
+
+# Data science
+kagglehub[pandas-datasets]
+roboflow

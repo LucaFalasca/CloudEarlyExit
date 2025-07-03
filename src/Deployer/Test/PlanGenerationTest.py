@@ -24,7 +24,7 @@ def main():
     )
 
     produce_plan_request = ProducePlanRequest(
-        models_ids=[ModelId(model_name="yolo11n-seg")],
+        models_ids=[ModelId(model_name="yolo11n")],
         latency_weight=1,
         energy_weight=0,
         device_max_energy=0,  ## TODO Check this out !!

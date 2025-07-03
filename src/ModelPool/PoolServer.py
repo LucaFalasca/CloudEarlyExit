@@ -124,19 +124,31 @@ class PoolServer(ModelPoolServicer):
         return PushResponse()
 
     def pull_calibration_dataset(self, request: CalibrationPullRequest, context):
+        print("Received Calibration Pull Request")
+        try:
+            model_name = request.model_id.model_name
 
-        model_name = request.model_id.model_name
+            file_name = "yolo11_calibration.npy"
+            file_dir = ConfigReader().read_str(
+                "model_pool_dirs", "CALIBRATION_DATASET_DIR"
+            )
+            print(
+                "Asked for file calibration dataset with path >> ", file_dir, file_name
+            )
 
-        file_name = f"{model_name}_calibration.npy"
-        file_dir = ConfigReader().read_str("model_pool_dirs", "CALIBRATION_DATASET_DIR")
+            file_path = os.path.join(file_dir, file_name)
 
-        file_path = os.path.join(file_dir, file_name)
-
-        chunk_size = ConfigReader().read_bytes_chunk_size()
-        with open(file_path, "rb") as file:
-            while chunk_data := file.read(chunk_size):
-                print("Here")
-                yield CalibrationChunk(chunk_data=chunk_data)
+            chunk_size = ConfigReader().read_bytes_chunk_size()
+            with open(file_path, "rb") as file:
+                while chunk_data := file.read(chunk_size):
+                    print("Here")
+                    yield CalibrationChunk(chunk_data=chunk_data)
+        except FileNotFoundError:
+            context.set_code(grpc.StatusCode.NOT_FOUND)
+            context.set_details(
+                f"Calibration dataset for model '{model_name}' not found."
+            )
+            print("Calibration Dataset not found")
 
         return
 

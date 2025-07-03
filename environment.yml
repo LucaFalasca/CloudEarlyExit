@@ -1,0 +1,57 @@
+name: cloudeearlyexit
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  
+  # Core ML/AI libraries
+  - numpy<2
+  - pandas
+  - matplotlib
+  
+  # System libraries
+  - libgl
+  - libglib
+  
+  # Development tools
+  - curl
+  - wget
+  - git
+  
+  # Pip dependencies (packages not available in conda)
+  - pip:
+    # TensorFlow ecosystem
+    - ultralytics
+    - ai-edge-litert
+    - tensorflow
+    - keras_cv
+    - keras-hub
+    
+    # ONNX ecosystem
+    - onnx
+    - onnxruntime
+    - onnxslim
+    - onnxruntime-extensions
+    - onnx-tool
+    
+    # System utilities
+    - psutil
+    - prettytable
+    - imageio
+    
+    # Network/gRPC
+    - grpcio
+    - grpcio-tools
+    
+    # Optimization
+    - PuLP
+    - networkx
+    
+    # Concurrency
+    - readerwriterlock
+    
+    # Data science
+    - kagglehub[pandas-datasets]
+    - roboflow

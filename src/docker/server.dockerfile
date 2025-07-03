@@ -12,6 +12,9 @@ RUN pip install PyYAML
 
 RUN pip install readerwriterlock
 RUN pip install psutil
+RUN pip install supervision
+RUN apt-get update
+RUN apt install -y libgl1
 
 RUN groupadd -g 1234 customgroup && \
     useradd -m -u 1234 -g customgroup customuser

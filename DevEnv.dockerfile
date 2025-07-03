@@ -47,6 +47,9 @@ RUN pip install networkx
 RUN pip install readerwriterlock
 
 RUN apt-get install iperf3 -y
+RUN pip install kagglehub[pandas-datasets]
+RUN pip install roboflow
+RUN 
 
 
 ## Shell Settings
